@@ -17,6 +17,9 @@
 ;; add newline to the end of the line by default
 (setq require-final-newline t)
 
+;; scroll one line at a time
+(setq scroll-step 1)
+
 ;; make buffer switch command auto suggestions, also for find-file command
 (ido-mode 1)
 
@@ -30,7 +33,7 @@
  '(js2-strict-missing-semi-warning nil)
  '(package-selected-packages
    (quote
-    (yaml-mode web-beautify use-package smooth-scrolling smartparens markdown-mode js2-mode highlight-symbol ensime elpy)))
+    (yaml-mode web-beautify use-package smartparens markdown-mode js2-mode highlight-symbol ensime elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -73,11 +76,6 @@
 
 ;; web-beautify
 (use-package web-beautify)
-
-;; smooth-scrolling
-(use-package smooth-scrolling
-  :config
-  (smooth-scrolling-mode 1))
 
 ;; markdown-mode
 (use-package markdown-mode)
