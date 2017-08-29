@@ -25,7 +25,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tango-dark)))
  '(inhibit-startup-screen t)
  '(js2-include-node-externs t)
  '(js2-strict-missing-semi-warning nil)
@@ -103,6 +102,11 @@
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
   :config
   (add-hook 'js2-mode-hook 'company-mode))
+
+;; monokai-theme
+(use-package monokai-theme
+  :init
+  (load-theme 'monokai t))
 
 ;;;;;;;
 
