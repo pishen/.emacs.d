@@ -20,6 +20,9 @@
 ;; scroll one line at a time
 (setq scroll-step 1)
 
+;; hide scrollbar
+(scroll-bar-mode -1)
+
 ;; make buffer switch command auto suggestions, also for find-file command
 (ido-mode 1)
 
@@ -33,7 +36,7 @@
  '(js2-strict-missing-semi-warning nil)
  '(package-selected-packages
    (quote
-    (yaml-mode web-beautify use-package smartparens markdown-mode js2-mode highlight-symbol ensime elpy)))
+    (nyan-mode yaml-mode web-beautify use-package smartparens markdown-mode js2-mode highlight-symbol ensime elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -105,6 +108,12 @@
 (use-package monokai-theme
   :init
   (load-theme 'monokai t))
+
+;; nyan-mode
+(use-package nyan-mode
+  :init
+  (nyan-mode t)
+  (nyan-start-animation))
 
 ;;;;;;;
 
