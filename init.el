@@ -37,7 +37,7 @@
  '(js2-strict-missing-semi-warning nil)
  '(package-selected-packages
    (quote
-    (yaml-mode web-beautify use-package smartparens markdown-mode js2-mode highlight-symbol ensime elpy)))
+    (nyan-mode yaml-mode web-beautify use-package smartparens markdown-mode js2-mode highlight-symbol ensime elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -109,6 +109,13 @@
 (use-package monokai-theme
   :init
   (load-theme 'monokai t))
+
+;; nyan-mode
+(use-package nyan-mode
+  :init
+  (nyan-mode t)
+  (setq nyan-bar-length 20)
+  (nyan-start-animation))
 
 ;;;;;;;
 
