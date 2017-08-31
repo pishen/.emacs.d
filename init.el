@@ -128,4 +128,4 @@
 (set-face-attribute 'default nil :font "Monaco-15")
 
 ;; fullscreen mode (put this at bottom for mac to work properly)
-(toggle-frame-fullscreen)
+(toggle-frame-maximized)
