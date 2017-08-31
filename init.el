@@ -105,6 +105,11 @@
   :config
   (add-hook 'js2-mode-hook 'company-mode))
 
+;; magit
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
+
 ;; monokai-theme
 (use-package monokai-theme
   :init
