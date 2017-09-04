@@ -17,6 +17,9 @@
 ;; add newline to the end of the line by default
 (setq require-final-newline t)
 
+;; delete trailing whitespaces on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; scroll one line at a time
 (setq scroll-step 1)
 (setq scroll-conservatively 10000)
