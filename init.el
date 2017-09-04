@@ -37,7 +37,7 @@
  '(js2-strict-missing-semi-warning nil)
  '(package-selected-packages
    (quote
-    (nyan-mode yaml-mode web-beautify use-package smartparens markdown-mode js2-mode highlight-symbol ensime elpy)))
+    (nyan-mode yaml-mode web-beautify use-package smartparens markdown-mode js2-mode highlight-symbol elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -64,7 +64,8 @@
 
 ;; ENSIME
 (use-package ensime
-  :pin melpa-stable
+  :ensure t
+  :pin melpa
   :init
   (add-to-list 'exec-path "/usr/local/bin"))
 
