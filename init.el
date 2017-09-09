@@ -30,6 +30,12 @@
 ;; make buffer switch command auto suggestions, also for find-file command
 (ido-mode 1)
 
+;; kill the buffer when hitting 'q'
+(defadvice quit-window (before quit-window-always-kill)
+  "When running 'quit-window', always kill the buffer."
+  (ad-set-arg 0 t))
+(ad-activate 'quit-window)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
