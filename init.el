@@ -46,7 +46,7 @@
  '(js2-strict-missing-semi-warning nil)
  '(package-selected-packages
    (quote
-    (nyan-mode yaml-mode web-beautify use-package smartparens markdown-mode js2-mode highlight-symbol elpy)))
+    (nyan-mode yaml-mode web-beautify use-package smartparens js2-mode highlight-symbol elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -90,11 +90,17 @@
   (smartparens-global-mode t)
   (show-smartparens-global-mode t))
 
+;; markdown-mode
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 ;; web-beautify
 (use-package web-beautify)
-
-;; markdown-mode
-(use-package markdown-mode)
 
 ;; elpy
 (use-package elpy
