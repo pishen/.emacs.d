@@ -36,6 +36,9 @@
   (ad-set-arg 0 t))
 (ad-activate 'quit-window)
 
+;; restore shift in org-mode
+(setq org-replace-disputed-keys t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
