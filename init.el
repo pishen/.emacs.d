@@ -79,7 +79,6 @@
   :ensure t
   :pin melpa
   :init
-  (add-to-list 'exec-path "/usr/local/bin")
   (setq ensime-startup-notification nil)
   (setq ensime-startup-snapshot-notification nil))
 
