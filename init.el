@@ -36,17 +36,12 @@
   (ad-set-arg 0 t))
 (ad-activate 'quit-window)
 
-;; restore shift in org-mode
-(setq org-replace-disputed-keys t)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
- '(js2-include-node-externs t)
- '(js2-strict-missing-semi-warning nil)
  '(package-selected-packages
    (quote
     (nyan-mode yaml-mode web-beautify use-package smartparens js2-mode highlight-symbol elpy)))
@@ -57,9 +52,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ensime-implicit-highlight ((t (:underline (:color "dim gray" :style wave)))))
- '(js2-error ((t (:underline (:color "red" :style wave)))))
- '(js2-external-variable ((t (:underline (:color "red" :style wave))))))
+ '(ensime-implicit-highlight ((t (:underline (:color "dim gray" :style wave))))))
 
 ;; MELPA
 (require 'package)
@@ -80,7 +73,10 @@
   :pin melpa
   :init
   (setq ensime-startup-notification nil)
-  (setq ensime-startup-snapshot-notification nil))
+  (setq ensime-startup-snapshot-notification nil)
+  (bind-key "C-c f" '(lambda () (interactive)
+    (shell-command (format "/usr/local/bin/scalafmt %s" (shell-quote-argument (buffer-file-name))))
+    (revert-buffer t t t))))
 
 ;; smartparens
 (use-package smartparens
