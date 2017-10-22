@@ -1,15 +1,6 @@
 ;; use space instead of tab
 (setq-default indent-tabs-mode nil)
 
-;; use custom auto indent
-(electric-indent-mode 0)
-(global-set-key (kbd "RET")
-  (lambda ()
-    (interactive)
-    (newline)
-    (if (save-excursion (re-search-backward "^[^\n]" nil t))
-      (indent-relative-maybe))))
-
 ;; disable auto-save and auto-backup
 (setq auto-save-default nil)
 (setq make-backup-files nil)
@@ -70,7 +61,7 @@
 ;; ENSIME
 (use-package ensime
   :ensure t
-  :pin melpa
+  :pin melpa-stable
   :init
   (setq ensime-startup-notification nil)
   (setq ensime-startup-snapshot-notification nil)
