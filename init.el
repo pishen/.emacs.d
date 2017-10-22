@@ -59,15 +59,19 @@
 (require 'use-package)
 
 ;; ENSIME
+(defun scalafmt ()
+  (interactive)
+  (shell-command
+   (format "/usr/local/bin/scalafmt %s"
+           (shell-quote-argument (buffer-file-name))))
+  (revert-buffer t t t))
+
 (use-package ensime
   :ensure t
   :pin melpa-stable
   :init
   (setq ensime-startup-notification nil)
-  (setq ensime-startup-snapshot-notification nil)
-  (bind-key "C-c f" '(lambda () (interactive)
-    (shell-command (format "/usr/local/bin/scalafmt %s" (shell-quote-argument (buffer-file-name))))
-    (revert-buffer t t t))))
+  (setq ensime-startup-snapshot-notification nil))
 
 ;; smartparens
 (use-package smartparens
