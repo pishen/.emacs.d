@@ -1,6 +1,17 @@
 ;; use space instead of tab
 (setq-default indent-tabs-mode nil)
 
+;; use custom auto indent
+(electric-indent-mode 0)
+(global-set-key (kbd "RET")
+  (lambda ()
+    (interactive)
+    (newline)
+    (insert-char ?\s
+      (save-excursion
+       (forward-line -1)
+       (string-match "[^ ]" (thing-at-point 'line))))))
+
 ;; disable auto-save and auto-backup
 (setq auto-save-default nil)
 (setq make-backup-files nil)
