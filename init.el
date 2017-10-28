@@ -5,8 +5,8 @@
 (global-set-key (kbd "s-<left>") 'move-beginning-of-line)
 (global-set-key (kbd "s-<right>") 'move-end-of-line)
 
-;; replace highlighted text when typing
-(delete-selection-mode 1)
+;; replace highlighted text when typing AND edit multiple lines at once
+(cua-selection-mode 1)
 
 ;; use custom auto indent
 (electric-indent-mode 0)
