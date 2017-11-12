@@ -19,6 +19,19 @@
        (forward-line -1)
        (string-match "[^ ]" (thing-at-point 'line))))))
 
+;; move line up/down
+(global-set-key (kbd "M-<up>")
+  (lambda ()
+    (interactive)
+    (transpose-lines 1)
+    (forward-line -2)))
+(global-set-key (kbd "M-<down>")
+  (lambda ()
+    (interactive)
+    (forward-line 1)
+    (transpose-lines 1)
+    (forward-line -1)))
+
 ;; disable auto-save and auto-backup
 (setq auto-save-default nil)
 (setq make-backup-files nil)
