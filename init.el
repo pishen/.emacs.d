@@ -66,7 +66,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (nyan-mode yaml-mode web-beautify use-package smartparens js2-mode highlight-symbol elpy)))
+    (web-mode magit nyan-mode yaml-mode web-beautify use-package smartparens js2-mode highlight-symbol elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -163,6 +163,12 @@
   (nyan-mode t)
   (setq nyan-bar-length 20)
   (nyan-start-animation))
+
+;; web-mode
+(use-package web-mode
+  :mode
+  (("\\.html\\'" . web-mode)
+   ("\\.css\\'" . web-mode)))
 
 ;;;;;;;
 
