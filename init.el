@@ -58,6 +58,14 @@
   (ad-set-arg 0 t))
 (ad-activate 'quit-window)
 
+;; make dired reuse the same buffer when hitting RET
+;; enable 'a'
+(put 'dired-find-alternate-file 'disabled nil)
+;; overwrite key binding
+(add-hook 'dired-mode-hook
+  (lambda ()
+    (local-set-key (kbd "RET") 'dired-find-alternate-file)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -66,7 +74,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (web-mode magit nyan-mode yaml-mode web-beautify use-package smartparens js2-mode highlight-symbol elpy)))
+    (neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode highlight-symbol ensime elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -79,7 +87,6 @@
 ;; MELPA
 (require 'package)
 (setq
- use-package-always-ensure t
  package-archives '(("melpa" . "http://melpa.org/packages/")
                     ("melpa-stable" . "http://stable.melpa.org/packages/")))
 
@@ -88,6 +95,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
+;; let use-package install the package automatically
+(setq use-package-always-ensure t)
 
 ;; ENSIME
 (defun scalafmt ()
@@ -98,7 +107,6 @@
   (revert-buffer t t t))
 
 (use-package ensime
-  :ensure t
   :pin melpa-stable
   :init
   (setq ensime-startup-notification nil)
@@ -116,7 +124,6 @@
 
 ;; markdown-mode
 (use-package markdown-mode
-  :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
@@ -169,6 +176,11 @@
   :mode
   (("\\.html\\'" . web-mode)
    ("\\.css\\'" . web-mode)))
+
+;; neotree
+(use-package neotree
+  :init
+  (setq neo-theme 'ascii))
 
 ;;;;;;;
 
