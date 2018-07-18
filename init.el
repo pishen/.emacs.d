@@ -59,7 +59,7 @@
 (ad-activate 'quit-window)
 
 ;; make dired reuse the same buffer when hitting RET
-;; enable 'a'
+;; enable 'a' in dired
 (put 'dired-find-alternate-file 'disabled nil)
 ;; overwrite key binding
 (add-hook 'dired-mode-hook
@@ -86,14 +86,14 @@
 
 ;; MELPA
 (require 'package)
-(setq
- package-archives '(("melpa" . "http://melpa.org/packages/")
-                    ("melpa-stable" . "http://stable.melpa.org/packages/")))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (package-initialize)
-(when (not package-archive-contents)
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
 (require 'use-package)
 ;; let use-package install the package automatically
 (setq use-package-always-ensure t)
