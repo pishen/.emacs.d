@@ -19,19 +19,6 @@
        (forward-line -1)
        (string-match "[^ ]" (thing-at-point 'line))))))
 
-;; move line up/down
-(global-set-key (kbd "M-<up>")
-  (lambda ()
-    (interactive)
-    (transpose-lines 1)
-    (forward-line -2)))
-(global-set-key (kbd "M-<down>")
-  (lambda ()
-    (interactive)
-    (forward-line 1)
-    (transpose-lines 1)
-    (forward-line -1)))
-
 ;; disable auto-save and auto-backup
 (setq auto-save-default nil)
 (setq make-backup-files nil)
@@ -74,7 +61,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode highlight-symbol ensime elpy)))
+    (move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode highlight-symbol ensime elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -186,6 +173,11 @@
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-initialize))
+
+;; move-text
+(use-package move-text
+  :config
+  (move-text-default-bindings))
 
 ;;;;;;;
 
