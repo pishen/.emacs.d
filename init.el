@@ -61,7 +61,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode highlight-symbol ensime elpy)))
+    (ido-vertical-mode move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode highlight-symbol ensime elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -178,6 +178,12 @@
 (use-package move-text
   :config
   (move-text-default-bindings))
+
+;; ido-vertical-mode
+(use-package ido-vertical-mode
+  :config
+  (ido-vertical-mode t)
+  (setq ido-vertical-define-keys 'C-n-and-C-p-only))
 
 ;;;;;;;
 
