@@ -8,16 +8,16 @@
 ;; replace highlighted text when typing AND edit multiple lines at once
 (cua-selection-mode 1)
 
-;; use custom auto indent
-(electric-indent-mode 0)
-(global-set-key (kbd "RET")
-  (lambda ()
-    (interactive)
-    (newline)
-    (insert-char ?\s
-      (save-excursion
-       (forward-line -1)
-       (string-match "[^ ]" (thing-at-point 'line))))))
+;; join following line
+(global-set-key (kbd "C-j")
+                (lambda () (interactive) (join-line 1)))
+
+;; vim-style open line
+(global-set-key (kbd "C-o")
+                (lambda ()
+                  (interactive)
+                  (move-end-of-line nil)
+                  (newline-and-indent)))
 
 ;; disable auto-save and auto-backup
 (setq auto-save-default nil)
@@ -71,7 +71,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (ido-vertical-mode move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode highlight-symbol ensime elpy)))
+    (exec-path-from-shell ido-vertical-mode move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode highlight-symbol ensime elpy)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
