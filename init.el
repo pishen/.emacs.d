@@ -12,13 +12,6 @@
 (global-set-key (kbd "C-j")
                 (lambda () (interactive) (join-line 1)))
 
-;; vim-style open line
-(global-set-key (kbd "C-o")
-                (lambda ()
-                  (interactive)
-                  (move-end-of-line nil)
-                  (newline-and-indent)))
-
 ;; disable auto-save and auto-backup
 (setq auto-save-default nil)
 (setq make-backup-files nil)
