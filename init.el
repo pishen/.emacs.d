@@ -1,8 +1,17 @@
 ;; use space instead of tab
 (setq-default indent-tabs-mode nil)
 
+;; smart beginning of line
+(defun smart-beginning-of-line ()
+  (interactive "^")
+  (let ((oldpos (point)))
+    (back-to-indentation)
+    (if (= oldpos (point))
+        (beginning-of-line))))
+(global-set-key (kbd "C-a") 'smart-beginning-of-line)
+
 ;; HOME and END on macOS
-(global-set-key (kbd "s-<left>") 'move-beginning-of-line)
+(global-set-key (kbd "s-<left>") 'smart-beginning-of-line)
 (global-set-key (kbd "s-<right>") 'move-end-of-line)
 
 ;; replace highlighted text when typing AND edit multiple lines at once
