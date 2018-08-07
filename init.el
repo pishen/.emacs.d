@@ -41,16 +41,6 @@
 ;; make buffer switch command auto suggestions, also for find-file command
 (ido-mode 1)
 
-;; open recently opened files in ido
-(recentf-mode t)
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-
 ;; kill the buffer when hitting 'q'
 (defadvice quit-window (before quit-window-always-kill)
   "When running 'quit-window', always kill the buffer."
