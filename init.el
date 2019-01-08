@@ -49,6 +49,9 @@
 ;; hide scrollbar
 (scroll-bar-mode -1)
 
+;; hide menubar
+(menu-bar-mode -1)
+
 ;; make buffer switch command auto suggestions, also for find-file command
 (ido-mode 1)
 
