@@ -61,6 +61,10 @@
   (ad-set-arg 0 t))
 (ad-activate 'quit-window)
 
+;; load dired and dired-x
+(require 'dired)
+(require 'dired-x)
+
 ;; make dired reuse the same buffer when hitting RET
 ;; enable 'a' in dired
 (put 'dired-find-alternate-file 'disabled nil)
