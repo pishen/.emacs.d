@@ -81,7 +81,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (htmlize exec-path-from-shell ido-vertical-mode move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode highlight-symbol ensime elpy)))
+    (htmlize exec-path-from-shell ido-vertical-mode move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode elpy company scala-mode)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -105,7 +105,13 @@
 ;; let use-package install the package automatically
 (setq use-package-always-ensure t)
 
-;; ENSIME
+;; company-mode
+(use-package company
+  :config (add-hook 'after-init-hook 'global-company-mode))
+
+;; Scala
+(use-package scala-mode)
+
 (defun scalafmt ()
   (interactive)
   (shell-command
@@ -113,11 +119,22 @@
            (shell-quote-argument (buffer-file-name))))
   (revert-buffer t t t))
 
-(use-package ensime
-  :pin melpa-stable
-  :init
-  (setq ensime-startup-notification nil)
-  (setq ensime-startup-snapshot-notification nil))
+;; Metals
+;; (use-package flycheck
+;;   :init (global-flycheck-mode))
+
+;; (use-package lsp-mode
+;;   :pin melpa-stable)
+
+;; (use-package lsp-ui
+;;   :pin melpa-stable
+;;   :hook (lsp-mode . lsp-ui-mode))
+
+;; (use-package sbt-mode)
+
+;; (use-package lsp-scala
+;;   :load-path "~/code/scala/lsp-scala/"
+;;   :hook (scala-mode . lsp-scala-enable))
 
 ;; smartparens
 (use-package smartparens
@@ -131,7 +148,6 @@
 
 ;; markdown-mode
 (use-package markdown-mode
-  :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
@@ -144,12 +160,6 @@
 (use-package elpy
   :config
   (elpy-enable))
-
-;; highlight-symbol
-(use-package highlight-symbol
-  :bind
-  (("<C-f3>" . highlight-symbol)
-   ("<f3>" . highlight-symbol-next)))
 
 ;; yaml mode
 (use-package yaml-mode)
