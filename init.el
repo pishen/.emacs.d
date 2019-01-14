@@ -84,12 +84,6 @@
     (htmlize exec-path-from-shell ido-vertical-mode move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode elpy company scala-mode)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ensime-implicit-highlight ((t (:underline (:color "dim gray" :style wave))))))
 
 ;; MELPA
 (require 'package)
