@@ -81,7 +81,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (eglot htmlize exec-path-from-shell ido-vertical-mode move-text neotree yaml-mode web-mode web-beautify use-package smartparens nyan-mode monokai-theme markdown-mode magit js2-mode elpy company scala-mode)))
+    (company elpy flycheck js2-mode lsp-mode lsp-scala lsp-ui magit markdown-mode monokai-theme scala-mode smartparens use-package web-beautify yaml-mode ido-vertical-mode move-text exec-path-from-shell neotree web-mode nyan-mode company-lsp)))
  '(sp-highlight-pair-overlay nil)
  '(tool-bar-mode nil))
 
@@ -97,11 +97,16 @@
 
 (require 'use-package)
 ;; let use-package install the package automatically
+(require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
 ;; company-mode
 (use-package company
   :config (add-hook 'after-init-hook 'global-company-mode))
+
+;; flycheck
+(use-package flycheck
+  :init (global-flycheck-mode))
 
 ;; Scala
 (use-package scala-mode)
@@ -114,10 +119,12 @@
   (revert-buffer t t t))
 
 ;; Metals
-(use-package eglot
-  :pin melpa-stable
-  :config
-  (add-to-list 'eglot-server-programs '(scala-mode . ("metals-emacs"))))
+(use-package lsp-mode
+  :init (setq lsp-prefer-flymake nil))
+
+(use-package lsp-ui)
+(use-package company-lsp)
+(use-package lsp-scala)
 
 ;; smartparens
 (use-package smartparens
